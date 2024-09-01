@@ -5,9 +5,7 @@ from tensorflow.lite.python.interpreter import Interpreter
 
 import matplotlib.pyplot as plt
 
-### Define function for inferencing with TFLite model and displaying results
-
-def tflite_detect_images(modelpath, image, labelPath, min_conf=0.5, savePath='~', txt_only=False):
+def tflite_detect_images(modelpath, image):
 
     interpreter = Interpreter(model_path=modelpath)
     interpreter.allocate_tensors()
@@ -39,4 +37,8 @@ def tflite_detect_images(modelpath, image, labelPath, min_conf=0.5, savePath='~'
 
     detections = []
 
+    image = cv2.cvtColor(image,cv2.COLOR_BGR2RGB)
+    plt.figure(figsize=(12,16))
+    plt.imshow(image)
+    plt.show()
         
